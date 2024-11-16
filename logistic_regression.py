@@ -59,10 +59,8 @@ def do_experiments(start, end, step_num):
 
         # Implement: Plot the dataset
         plt.subplot(n_rows, n_cols, i)
-        plt.scatter(X[:, 0], X[:, 1], c=y, cmap='coolwarm', edgecolor='k', s=50)
-        plt.xlabel("Feature 1")
-        plt.ylabel("Feature 2")
-        plt.title(f"Shift Distance: {distance:.2f}")
+        plt.scatter(X[y == 0][:, 0], X[y == 0][:, 1], color="blue", label="Class 0", alpha=0.5)
+        plt.scatter(X[y == 1][:, 0], X[y == 1][:, 1], color="red", label="Class 1", alpha=0.5)
 
         # Implement: Calculate and store logistic loss
         proba = model.predict_proba(X)
@@ -96,6 +94,7 @@ def do_experiments(start, end, step_num):
         plt.title(f"Shift Distance = {distance}", fontsize=24)
         plt.xlabel("x1")
         plt.ylabel("x2")
+        plt.axline((0, intercept), slope=slope, color="black", linestyle="--", label="Decision Boundary")
 
         # Display decision boundary equation and margin width on the plot
         equation_text = f"{beta0:.2f} + {beta1:.2f} * x1 + {beta2:.2f} * x2 = 0\nx2 = {slope:.2f} * x1 + {intercept:.2f}"
@@ -118,7 +117,7 @@ def do_experiments(start, end, step_num):
 
     # Implement: Plot beta0
     plt.subplot(3, 3, 1)
-    plt.plot(shift_distances, beta0_list, marker='x')
+    plt.plot(shift_distances, beta0_list, marker='x',label="Beta0")
     plt.title("Shift Distance vs Beta0")
     plt.xlabel("Shift Distance")
     plt.ylabel("Beta0")
