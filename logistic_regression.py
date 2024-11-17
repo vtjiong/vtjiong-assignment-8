@@ -119,7 +119,7 @@ def do_experiments(start, end, step_num):
 
     # Implement: Plot beta0
     plt.subplot(3, 3, 1)
-    plt.plot(shift_distances, beta0_list, marker='x)
+    plt.plot(shift_distances, beta0_list, marker='x')
     plt.title("Shift Distance vs Beta0")
     plt.xlabel("Shift Distance")
     plt.ylabel("Beta0")
