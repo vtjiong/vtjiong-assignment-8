@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from scipy.spatial.distance import cdist
@@ -21,7 +23,7 @@ def generate_ellipsoid_clusters(distance, n_samples=100, cluster_std=0.5):
     X2 = np.random.multivariate_normal(mean=[1, 1], cov=covariance_matrix, size=n_samples)
     
     # Implement: Shift the second cluster along the x-axis and y-axis for a given distance
-    X2 += np.array([distance, distance])
+    X2 += np.array([distance, -distance])
     y2 = np.ones(n_samples)
 
     # Combine the clusters into one dataset
@@ -117,7 +119,7 @@ def do_experiments(start, end, step_num):
 
     # Implement: Plot beta0
     plt.subplot(3, 3, 1)
-    plt.plot(shift_distances, beta0_list, marker='x',label="Beta0")
+    plt.plot(shift_distances, beta0_list, marker='x)
     plt.title("Shift Distance vs Beta0")
     plt.xlabel("Shift Distance")
     plt.ylabel("Beta0")
